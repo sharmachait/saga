@@ -18,7 +18,9 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
     public List<Product> getProducts() {
         return products;
     }
-
+    public static Builder builder() {
+        return new Builder();
+    }
     public boolean isActive() {
         return active;
     }
