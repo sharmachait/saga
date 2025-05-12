@@ -15,6 +15,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <mockito.version>5.16.0</mockito.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -58,8 +59,14 @@
                 <artifactId>common-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
             <!--
-                we dont have container here because its not used by any other project
+                we don't have container here because it's not used by any other project
                 it uses all other projects to create one executable jar file
              -->
         </dependencies>
