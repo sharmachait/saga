@@ -33,9 +33,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
 
     private void validateRestaurant(Restaurant restaturant) {
         if(!restaturant.isActive()){
-            throw new OrderDomainException("Restaurant with id "
-                    + restaturant.getId().getValue()
-                    + " is not active");
+            throw new OrderDomainException("Restaurant with id " + restaturant.getId().getValue() + " is not active.");
         }
     }
 

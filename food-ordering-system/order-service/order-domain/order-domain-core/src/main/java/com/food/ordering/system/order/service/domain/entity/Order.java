@@ -73,7 +73,7 @@ public class Order extends AggregateRoot<OrderId> {
         // validate the item price against the price in the persistent store
         if(!orderItem.isPriceValid()){
             throw new OrderDomainException("Order item price: " + orderItem.getPrice().getAmount() +
-                    " is not valid for product " + orderItem.getProduct() +".");
+                    " is not valid for product " + orderItem.getProduct().getId().getValue() +".");
         }
     }
 
