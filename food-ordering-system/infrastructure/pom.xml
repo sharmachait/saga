@@ -10,7 +10,10 @@
     </parent>
 
     <artifactId>infrastructure</artifactId>
-
+    <packaging>pom</packaging>
+    <modules>
+        <module>kafka</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
