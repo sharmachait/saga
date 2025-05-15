@@ -17,10 +17,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <mockito.version>5.16.0</mockito.version>
-<!--        <spring-kafka.version>2.8.2</spring-kafka.version>-->
         <spring-kafka.version>3.2.4</spring-kafka.version>
         <kafka-avro-serializer.version>7.4.0</kafka-avro-serializer.version>
         <avro.version>1.11.1</avro.version>
+        <lombok.version>1.18.38</lombok.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -90,10 +90,12 @@
                 <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!--
-                we don't have container here because it's not used by any other project
-                it uses all other projects to create one executable jar file
-             -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -102,9 +104,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
-<!--            <optional>true</optional>-->
-            <!-- the provided scope means that it is only required at the time of compilation
-                 not at runtime because lombok is only used to generate boilerplate code  -->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -114,24 +113,19 @@
 
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <excludes>-->
-<!--                        <exclude>-->
-<!--                            <groupId>org.projectlombok</groupId>-->
-<!--                            <artifactId>lombok</artifactId>-->
-<!--                        </exclude>-->
-<!--                    </excludes>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <release>23</release>
+                    <release>17</release>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>
