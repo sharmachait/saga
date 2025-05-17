@@ -32,6 +32,10 @@ public class StreetAddress {
         return city;
     }
 
+    public static StreetAddressBuilder builder(){
+        return new StreetAddressBuilder();
+    }
+
     @Override
     public boolean equals(Object o) {
         if(this == o) return true;
@@ -43,5 +47,43 @@ public class StreetAddress {
     @Override
     public int hashCode() {
         return Objects.hash(street, postalCode, city);
+    }
+
+    public static final class StreetAddressBuilder {
+        private UUID id;
+        private String street;
+        private String postalCode;
+        private String city;
+
+        private StreetAddressBuilder() {
+        }
+
+        public static StreetAddressBuilder aStreetAddress() {
+            return new StreetAddressBuilder();
+        }
+
+        public StreetAddressBuilder id(UUID id) {
+            this.id = id;
+            return this;
+        }
+
+        public StreetAddressBuilder street(String street) {
+            this.street = street;
+            return this;
+        }
+
+        public StreetAddressBuilder postalCode(String postalCode) {
+            this.postalCode = postalCode;
+            return this;
+        }
+
+        public StreetAddressBuilder city(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public StreetAddress build() {
+            return new StreetAddress(id, street, postalCode, city);
+        }
     }
 }

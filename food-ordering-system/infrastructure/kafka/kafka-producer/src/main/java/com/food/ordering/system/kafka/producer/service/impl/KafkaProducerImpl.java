@@ -29,6 +29,7 @@ public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordB
         try {
             CompletableFuture<SendResult<K, V>>  resultFuture = kafkaTemplate.send(topicName, key, message);
             // the key is used only to determine the partition of the topic the data needs to go to
+            // the key can also provide guarantee of order when consuming
             resultFuture.whenComplete(callback);
         } catch (KafkaException e) {
             log.error("Error sending to Kafka - Topic: {}, Key: {}", topicName, key, e); // Full exception logged

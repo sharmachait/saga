@@ -9,7 +9,6 @@ import com.food.ordering.system.order.service.domain.valueObject.TrackingId;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class Order extends AggregateRoot<OrderId> {
     private final CustomerId customerId;
@@ -17,7 +16,7 @@ public class Order extends AggregateRoot<OrderId> {
     private final StreetAddress deliveryAddress;
     private final Money price;
     private final List<OrderItem> items;
-
+    public static final String FAILUREDELIMITTER = ",";
     private TrackingId trackingId;
     private OrderStatus orderStatus;
     private List<String> failureMessages;

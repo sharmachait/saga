@@ -27,6 +27,7 @@ public class OrderAddressEntity {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderAddressEntity that = (OrderAddressEntity) o;
         return Objects.equals(id, that.id);
