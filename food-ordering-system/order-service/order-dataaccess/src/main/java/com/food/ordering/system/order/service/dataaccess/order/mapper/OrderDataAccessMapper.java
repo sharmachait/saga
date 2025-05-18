@@ -54,7 +54,8 @@ public class OrderDataAccessMapper {
                 .items(orderItemEntitiesToOrderItem(orderEntity.getItems()))
                 .orderStatus(orderEntity.getOrderStatus())
                 .failureMessages(orderEntity.getFailureMessages().isEmpty() ?
-                        new ArrayList<>(List.of(orderEntity.getFailureMessages().split(FAILUREDELIMITTER))) : new ArrayList<>())
+                        new ArrayList<>(List.of(orderEntity.getFailureMessages().split(FAILUREDELIMITTER)))
+                        : new ArrayList<>())
                 .build();
     }
 
