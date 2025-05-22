@@ -37,7 +37,7 @@ public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordB
             throw new KafkaProducerException(e.getMessage()); // Optional: throw if sync error handling needed
         }
 //
-//        Some errors occur immediately when calling kafkaTemplate.send(...), such as:
+//        Some errors occur immediately synchronously when calling kafkaTemplate.send(...), such as:
 //
 //        Invalid topic name
 //
